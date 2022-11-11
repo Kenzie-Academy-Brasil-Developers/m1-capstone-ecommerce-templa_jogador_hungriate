@@ -378,17 +378,10 @@ for(i = 1 ; i <= listTotalItens.length ; i++){
     let  eventoClick = document.querySelector("#add_"+[i])
 
     eventoClick.addEventListener("click" , function (e){
-    let idElemento = e.target.id  
-    console.log()  
+    let idElemento = e.target.id.slice(-1) 
+    console.log(idElemento)  
     })
 }
-
-
-
-
-
-
-
 
 
 
