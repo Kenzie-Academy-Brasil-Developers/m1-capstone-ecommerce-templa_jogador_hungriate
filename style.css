@@ -116,6 +116,7 @@ main{
     font-size: 15px;
     font-weight: bold;
 }
+
 .add_carrinho:hover{
     text-decoration-line: underline;
     color: rgb(38, 38, 169);
@@ -176,6 +177,7 @@ main{
     max-height: 700px;
     overflow-y: auto;
 }
+
 .card_carrinho{
     width: 250px;
     margin: 20px;
@@ -223,7 +225,6 @@ main{
 }
 
 
-
 .button_retira_carrinho:hover{
     text-decoration-line: underline;
     color: rgb(38, 38, 169);
@@ -242,7 +243,6 @@ main{
 .finalizar:hover{
     background-color: rgba(42, 42, 167, 0.978);
 }
-
 
 .centralizar_texto{
     text-align: center;

@@ -225,9 +225,7 @@ function addCarrinho(id){
      // removendo carrinho
      cardCarrinho.addEventListener("click" ,  function(e){
 
-        
-     
-        
+
         cardCarrinho = document.querySelector("#carrinho_" + (quantiaCarrinho - 1))
 
         // Subtrai valor do item retirado
