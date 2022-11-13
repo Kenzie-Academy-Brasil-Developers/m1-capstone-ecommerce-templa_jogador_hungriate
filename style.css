@@ -123,13 +123,12 @@ main{
    
 }
 
-/* carrinho de compras */
 
+/* carrinho de compras */
 .section_carrinho{
     width: 30%;
     margin-top: 10px;
 }
-
 
 .div_pesquisa{
     
@@ -144,7 +143,6 @@ main{
     opacity: 50%;
 }
 
-
 .input_button_pesquisa{
     padding: 20px;
     font-size: 17px;
@@ -157,6 +155,15 @@ main{
     background-color:rgba(26, 26, 98, 0.978);
 }
 
+/* Carrinho */
+.centralizar_texto{
+    text-align: center;
+}
+
+.img_carrinho{
+    width: 100px;
+    height: 110px;
+}
 
 .titulo_carrinho{
     background-color: rgba(32, 32, 126, 0.978);
@@ -164,7 +171,10 @@ main{
     padding: 20px;
     align-items: center;
     margin: 0;
-    margin-top: 5px;
+    margin-top: 30px;
+}
+.centralizar_texto{
+    text-align: center;
 }
 
 .lista_carrinho{
@@ -178,17 +188,43 @@ main{
     overflow-y: auto;
 }
 
+
 .card_carrinho{
-    width: 250px;
+    width: 280px;
     margin: 20px;
     padding: 10px;
+    border: solid 1px rgb(184, 180, 180);
+    display: flex;
 }
+
+h3{
+    margin-top: 0;
+}
+
 .card_carrinho:hover{
     box-shadow: 0px 0px 4px 0px ;
 }
 
-/* contador */
 
+/* Botão carrinho */
+.button_retira_carrinho{
+    border: none;
+    background-color: rgba(239, 240, 243, 0.662);
+    padding: 8px;
+    font-size: 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    border: solid 1px;
+}
+
+
+.button_retira_carrinho:hover{
+    text-decoration-line: underline;
+    color: rgb(38, 38, 169);
+    background-color: rgb(255, 255, 255);
+}
+
+/* contador */
 .contador{
     padding: 20px;
     display: flex;
@@ -210,29 +246,8 @@ main{
     padding: 10px;
     color: white;
 }
-
-
-.button_retira_carrinho{
-    border: none;
-    background-color: rgba(239, 240, 243, 0.662);
-    padding: 0;
-    margin-top: 10px;
-    font-size: 15px;
-    padding: 10px;
-    border-radius: 10px;
-    border: solid 1px;
-    font-weight: bold;
-}
-
-
-.button_retira_carrinho:hover{
-    text-decoration-line: underline;
-    color: rgb(38, 38, 169);
-    background-color: rgb(255, 255, 255);
-}
-
+/* Botão finalizar */
 .finalizar{
-    margin-top: 2px;
     width: 100%;
     height: 60px;
     background-color: rgba(32, 32, 126, 0.978);
@@ -244,6 +259,3 @@ main{
     background-color: rgba(42, 42, 167, 0.978);
 }
 
-.centralizar_texto{
-    text-align: center;
-}
