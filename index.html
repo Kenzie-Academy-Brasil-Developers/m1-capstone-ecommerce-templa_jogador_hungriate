@@ -12,75 +12,64 @@
 
     <!-- cabeçalio -->
 
-    <header>
-        <div class="container_header">
-            <h1 class="titulo">Weartake</h1>
-            <nav> 
-                <ul>
-                    <li><span onclick="totalItensCard()" class="link_menu"><strong>Todos</strong></span></li>
-                    <li><span onclick="totalPlacasDeVideo()" class="link_menu">Placas de video</span></li>
-                    <li><span onclick="totalProcessadores()" class="link_menu">Processadores</span></li>
-                    <li><span onclick="totalPlacasMae()" class="link_menu">placas mãe</span></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <header>
+      <div class="container_header">
+          <h1 class="titulo">Hungria Magazine</h1>
+          <nav> 
+              <ul>
+                  <li><span onclick="totalItensCard()" class="link_menu"><strong>Todos</strong></span></li>
+                  <li><span onclick="filtroPlacasDeVideo()" class="link_menu">Placas de video</span></li>
+                  <li><span onclick="totalProcessadores()" class="link_menu">Processadores</span></li>
+                  <li><span onclick="totalPlacasMae()" class="link_menu">placas mãe</span></li>
+              </ul>
+          </nav>
+      </div>
+  </header>
 
     <!-- corpo -->
 
-    <main>
+  <main>
+      <!-- lista de produtos -->
+    <div class="container_products" >
         <!-- lista de produtos -->
-        <div class="container_products" >
-            <!-- lista de produtos -->
-            <section class="section_products">
-             <ul id="lista_produtos" class="lista_produtos">
+      <section class="section_products">
+        <ul id="lista_produtos" class="lista_produtos">
 
-             </ul>
-            </section>
+        </ul>
+      </section>
 
+        <!-- Carrinho de Compras -->
+      <section class="section_carrinho">
+          <div class="div_pesquisa">
+            <input class="input_pesquisa" placeholder="Digite aqui sua pesquisa" type="text">
+            <input class="input_button_pesquisa" type="button" value="Pesquisar">
+          </div>
 
+          <!-- lista carrinho de compras -->
+          <div class="centralizar_texto">
+            <h2 class="titulo_carrinho">Carrinho de compras</h2>
+            <ul id="lista_carrinho" class="lista_carrinho">
+            
+            </ul>
+          </div>
 
+          <!-- contador preço quantidade carrinho -->
+          <div >
+            <ul class="contador">
+              <li class="list_contador">
+                <span class="span_contador"><strong>Quantidade:</strong></span>
+                <span id="quantidadeCarrinho" class="span_contador"><strong>0</strong></span>
+              </li>
 
-
-
-             <!-- Carrinho de Compras -->
-            <section class="section_carrinho">
-              <div class="div_pesquisa">
-                
-                <input class="input_pesquisa" placeholder="Digite aqui sua pesquisa" type="text">
-                <input class="input_button_pesquisa" type="button" value="Pesquisar">
-
-              </div>
-            <!-- lista carrinho de compras -->
-              <div>
-                <ul id="lista_carrinho" class="lista_carrinho">
-                    
-                    
-
-                </ul>
-              </div>
-
-              <!-- contador preço quantidade carrinho -->
-
-              <div >
-
-                <ul class="contador">
-
-                  <li class="list_contador">
-                    <span class="span_contador"><strong>Quantidade:</strong></span>
-                    <span class="span_contador"><strong>3</strong></span>
-                  </li>
-
-                  <li class="list_contador" >
-                    <span class="span_contador"><strong>Total:</strong></span> 
-                    <span class="span_contador"><strong>R$ 200.00</strong></span>
-                  </li>
-
-                </ul>
-
-              </div>
-            </section>
-        </div>
-    </main>
+              <li class="list_contador" >
+                <span class="span_contador"><strong>Total:</strong></span> 
+                <span id="somaTotal" class="span_contador"><strong>R$ 0</strong></span>
+              </li>
+            </ul>
+          </div>
+          <button onclick="(finalizar())" class="finalizar">Finalizar Pedido</button>
+      </section>
+    </div>
+  </main>
 </body>
 </html>

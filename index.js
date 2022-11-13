@@ -3,8 +3,8 @@ const listItens = [
     id: 1,
     img: "./img/PlacasDeVideo/rtx-2060.jpg",
     tipo: "Placa de video",
-    titulo: "rtx-2060",
-    descricao: "a melhor custo beneficio",
+    titulo: "RTX-2060",
+    descricao: "a melhor custo beneficio da categoria",
     preco: 2500
     },
 
@@ -12,7 +12,7 @@ const listItens = [
     id: 2,
     img: "./img/PlacasDeVideo/rtx-3060.jpg",
     tipo: "Placa de video",
-    titulo: "rtx-3060",
+    titulo: "RTX-3060",
     descricao: "uma das melhores placas da atualidade",
     preco: 2800
     },
@@ -21,8 +21,8 @@ const listItens = [
     id: 3,
     img: "./img/PlacasDeVideo/rtx-3060ti.jpg",
     tipo: "Placa de video",
-    titulo: "rtx-3060ti",
-    descricao: "ideal pra jogar em 2k",
+    titulo: "RTX-3060-ti",
+    descricao: "ideal pra jogar em Full hd e 2k com boa qualidade",
     preco: 3500
     },
 
@@ -31,7 +31,7 @@ const listItens = [
     img: "./img/Processadores/core_i9.jpg",
     tipo: "processador",
     titulo: "core_i9",
-    descricao: "Um processador muito forte.",
+    descricao: "Um processador muito forte rapido e sem dor de cabeça",
     preco: 5000
     },
 
@@ -82,86 +82,78 @@ const listItens = [
 ]
 
 const listTotalItens = []
-const listPlacasDeVideo = []
-const listProcessadores = []
-const listPlacasMae = []
+
+let quantiaCarrinho = 0
+let somando = 0
+
+
+
+//criando lista de arrey
 
 function criaLista(){
 
-    for(i = 0 ; i < listItens.length ; i++){
-        
+    for(i = 0 ; i < listItens.length ; i++){ 
         listTotalItens.push(listItens[i])
-
-        if(listItens[i].tipo == "Placa de video"){
-            listPlacasDeVideo.push(listItens[i])
-        }
-
-        if(listItens[i].tipo == "Placa mãe"){
-            listPlacasMae.push(listItens[i])
-        }
-
-        if(listItens[i].tipo == "processador"){
-            listProcessadores.push(listItens[i])
-        }
-
+        
     }
 
     totalItensCard()
-
 }
 criaLista()
+
+
 
 // renderiza todos os cards
 function totalItensCard(){
 
     let lista = document.querySelector("#lista_produtos") // acesso ao ul
-    lista.innerHTML = ""
+        lista.innerHTML = ""
 
-    for(let i = 0 ; i < listTotalItens.length ; i++){
-
-        
+    for(let i = 0 ; i < listTotalItens.length ; i++){ 
 
         let card = document.createElement("li") // lista
-        card.id = listTotalItens[i].id
-        card.className = "card_produtos"
+            card.id = listTotalItens[i].id
+            card.className = "card_produtos"
+
+            // if(listTotalItens[i].tipo == "Placa de video"){
+            //     console.log(listTotalItens[i])
+            // }
+           
 
         let img = document.createElement("img") // img
-        img.id = "img_card"
-        img.className = "img_card"
-        img.src = listItens[i].img
+            img.id = "img_card"
+            img.className = "img_card"
+            img.src = listItens[i].img
 
         let div = document.createElement("div") // div da descrição
-        div.id = "div_descricao_card"
-        div.className = "div_descricao_card"
+            div.id = "div_descricao_card"
+            div.className = "div_descricao_card"
         
 
         let tipo = document.createElement("span") // tipo do produto
-        tipo.id = "tipo"
-        tipo.className = "tipo"
-        tipo.innerHTML = listTotalItens[i].tipo
+            tipo.id = "tipo"
+            tipo.className = "tipo"
+            tipo.innerHTML = listTotalItens[i].tipo
 
         let titulo = document.createElement("h3") // titulo
-        titulo.id = "titulo"
-        titulo.className = "titulo"
-        titulo.innerHTML = listTotalItens[i].titulo
+            titulo.id = "titulo"
+            titulo.className = "titulo"
+            titulo.innerHTML = listTotalItens[i].titulo
 
         let descricao = document.createElement("p") // descricão
-        descricao.id = "descricao"
-        descricao.className = "descricao"
-        descricao.innerHTML = listTotalItens[i].descricao
+            descricao.id = "descricao"
+            descricao.className = "descricao"
+            descricao.innerHTML = listTotalItens[i].descricao
 
         let preco = document.createElement("span") // preço
-        preco.id = "preco"
-        preco.className = "preco"
-        preco.innerHTML = "R$ " + listTotalItens[i].preco
+            preco.id = "preco"
+            preco.className = "preco"
+            preco.innerHTML =  listTotalItens[i].preco.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
 
         let addCarrinho = document.createElement("button") // adicionar ao carrinho
-        addCarrinho.id = "add_" + listTotalItens[i].id
-        addCarrinho.className = "add_carrinho"
-        addCarrinho.innerHTML = "ADICIONAR AO CARRINHO"
-
-        
-
+            addCarrinho.id = "add_" + listTotalItens[i].id
+            addCarrinho.className = "add_carrinho"
+            addCarrinho.innerHTML = "ADICIONAR AO CARRINHO"
 
 
         lista.appendChild(card)
@@ -174,238 +166,54 @@ function totalItensCard(){
         card.appendChild(div)
 
     }
-
+ 
+    enviaCard()
 }
 
 
-// Filtro Placas de video
-function totalPlacasDeVideo(){
+// pegando id da lista e mandando pra function responsavel
+function enviaCard(){
+   
+   for(i = 1 ; i <= listTotalItens.length ; i++){
 
-    let lista = document.querySelector("#lista_produtos") // acesso ao ul
-    lista.innerHTML = ""
+    let eventoClick = document.querySelector("#add_"+ i)
 
-    for(let i = 0 ; i < listPlacasDeVideo.length ; i++){
+        eventoClick.addEventListener("click" , function (e){
 
-        let card = document.createElement("li") // lista
-        card.className = "card_produtos"
-        card.id = listPlacasDeVideo[i].id
-
-        let img = document.createElement("img") // img
-        img.id = "img_card"
-        img.className = "img_card"
-        img.src = listPlacasDeVideo[i].img
-
-        let div = document.createElement("div") // div da descrição
-        div.id = "div_descricao_card"
-        div.className = "div_descricao_card"
-        
-
-        let tipo = document.createElement("span") // tipo do produto
-        tipo.id = "tipo"
-        tipo.className = "tipo"
-        tipo.innerHTML = listPlacasDeVideo[i].tipo
-
-        let titulo = document.createElement("h3") // titulo
-        titulo.id = "titulo"
-        titulo.className = "titulo"
-        titulo.innerHTML = listPlacasDeVideo[i].titulo
-
-        let descricao = document.createElement("p") // descricão
-        descricao.id = "descricao"
-        descricao.className = "descricao"
-        descricao.innerHTML = listPlacasDeVideo[i].descricao
-
-        let preco = document.createElement("span") // preço
-        preco.id = "preco"
-        preco.className = "preco"
-        preco.innerHTML = "R$ " + listPlacasDeVideo[i].preco
-
-        let addCarrinho = document.createElement("button") // adicionar ao carrinho
-        addCarrinho.id = "add_" + listTotalItens[i].id
-        addCarrinho.className = "add_carrinho"
-        addCarrinho.innerHTML = "ADICIONAR AO CARRINHO"
-        
-
-
-
-        lista.appendChild(card)
-        card.appendChild(img)
-        div.appendChild(tipo)
-        div.appendChild(titulo)
-        div.appendChild(descricao)
-        div.appendChild(preco)
-        div.appendChild(addCarrinho)
-        card.appendChild(div)
+            addCarrinho(e.target.id[4] - 1) 
+            somar(e.target.id[4] - 1)
+            contadorItensCarrinho()
+            
+        })
 
     }
-}
-
-
-// Filtro de processadores
-function totalProcessadores(){
-
-    let lista = document.querySelector("#lista_produtos") // acesso ao ul
-    lista.innerHTML = ""
-
-    for(let i = 0 ; i < listProcessadores.length ; i++){
-
-        let card = document.createElement("li") // lista
-        card.className = "card_produtos"
-        card.id = listProcessadores[i].id
-
-        let img = document.createElement("img") // img
-        img.id = "img_card"
-        img.className = "img_card"
-        img.src = listProcessadores[i].img
-
-        let div = document.createElement("div") // div da descrição
-        div.id = "div_descricao_card"
-        div.className = "div_descricao_card"
-        
-
-        let tipo = document.createElement("span") // tipo do produto
-        tipo.id = "tipo"
-        tipo.className = "tipo"
-        tipo.innerHTML = listProcessadores[i].tipo
-
-        let titulo = document.createElement("h3") // titulo
-        titulo.id = "titulo"
-        titulo.className = "titulo"
-        titulo.innerHTML = listProcessadores[i].titulo
-
-        let descricao = document.createElement("p") // descricão
-        descricao.id = "descricao"
-        descricao.className = "descricao"
-        descricao.innerHTML = listProcessadores[i].descricao
-
-        let preco = document.createElement("span") // preço
-        preco.id = "preco"
-        preco.className = "preco"
-        preco.innerHTML = "R$ " + listProcessadores[i].preco
-
-        let addCarrinho = document.createElement("button") // adicionar ao carrinho
-        addCarrinho.id = "add_" + listTotalItens[i].id
-        addCarrinho.className = "add_carrinho"
-        addCarrinho.innerHTML = "ADICIONAR AO CARRINHO"
-        
-
-
-
-        lista.appendChild(card)
-        card.appendChild(img)
-        div.appendChild(tipo)
-        div.appendChild(titulo)
-        div.appendChild(descricao)
-        div.appendChild(preco)
-        div.appendChild(addCarrinho)
-        card.appendChild(div)
-
-    }
-}
-
-
-// Filtro Placas Mãe
-function totalPlacasMae(){
-
-    let lista = document.querySelector("#lista_produtos") // acesso ao ul
-    lista.innerHTML = ""
-
-    for(let i = 0 ; i < listPlacasMae.length ; i++){
-
-        let card = document.createElement("li") // lista
-        card.className = "card_produtos"
-        card.id = listPlacasMae[i].id
-        
-
-        let img = document.createElement("img") // img
-        img.id = "img_card"
-        img.className = "img_card"
-        img.src = listPlacasMae[i].img
-
-        let div = document.createElement("div") // div da descrição
-        div.id = "div_descricao_card"
-        div.className = "div_descricao_card"
-        
-
-        let tipo = document.createElement("span") // tipo do produto
-        tipo.id = "tipo"
-        tipo.className = "tipo"
-        tipo.innerHTML = listPlacasMae[i].tipo
-
-        let titulo = document.createElement("h3") // titulo
-        titulo.id = "titulo"
-        titulo.className = "titulo"
-        titulo.innerHTML = listPlacasMae[i].titulo
-
-        let descricao = document.createElement("p") // descricão
-        descricao.id = "descricao"
-        descricao.className = "descricao"
-        descricao.innerHTML = listPlacasMae[i].descricao
-
-        let preco = document.createElement("span") // preço
-        preco.id = "preco"
-        preco.className = "preco"
-        preco.innerHTML = "R$ " + listPlacasMae[i].preco
-
-        let addCarrinho = document.createElement("button") // adicionar ao carrinho
-        addCarrinho.id = "add_" + listTotalItens[i].id
-        addCarrinho.className = "add_carrinho"
-        addCarrinho.innerHTML = "ADICIONAR AO CARRINHO"
-        addCarrinho.value = 
-
-        lista.appendChild(card)
-        card.appendChild(img)
-        div.appendChild(tipo)
-        div.appendChild(titulo)
-        div.appendChild(descricao)
-        div.appendChild(preco)
-        div.appendChild(addCarrinho)
-        card.appendChild(div)
-
-    }
-}
-
-
-
-
-let ListaCarrinho = []
-
-
-
-let add_carrinho = []
-
-for(i = 1 ; i <= listTotalItens.length ; i++){
-    let  eventoClick = document.querySelector("#add_"+[i])
-
-    eventoClick.addEventListener("click" , function (e){
-    let idElemento = e.target.id.slice(-1) 
-    console.log(idElemento)  
-    })
-}
-
-
-
-function addCarrinho(){
-
     
+}
+
+
+function addCarrinho(id){
+
     let carrinho = document.querySelector("#lista_carrinho")
 
-    let cardCarrinho = document.createElement("card_carrinho")
-    cardCarrinho.id = "card_carrinho"
-    cardCarrinho.className = "card_carrinho"
+    let cardCarrinho = document.createElement("li")
+        cardCarrinho.id = "carrinho_" + quantiaCarrinho
+        cardCarrinho.className = "card_carrinho"
 
     let img = document.createElement("img")
-    img.src = listTotalItens[0].img
+        img.src = listTotalItens[id].img
 
     let titulo = document.createElement("h3")
-    titulo.innerHTML = listTotalItens[0].titulo
+        titulo.innerHTML = listTotalItens[id].titulo
 
     let preco = document.createElement("p")
-    preco.innerHTML = "R$ " + listTotalItens[0].preco
+        preco.innerHTML = "R$ " + listTotalItens[id].preco.toFixed(2)
 
     let retiraCarrinho = document.createElement("button")
-    retiraCarrinho.innerText = "Retirar do carrinho"
+        retiraCarrinho.innerText = "Retirar do carrinho"
+        retiraCarrinho.className = "button_retira_carrinho"
+        retiraCarrinho.id = "id_" + listTotalItens[id].id
 
+   
 
     cardCarrinho.appendChild(img)
     cardCarrinho.appendChild(titulo)
@@ -413,18 +221,61 @@ function addCarrinho(){
     cardCarrinho.appendChild(retiraCarrinho)
     carrinho.appendChild(cardCarrinho)
 
+
+     // removendo carrinho
+     cardCarrinho.addEventListener("click" ,  function(e){
+
+        
+     
+        
+        cardCarrinho = document.querySelector("#carrinho_" + (quantiaCarrinho - 1))
+
+        // Subtrai valor do item retirado
+        let pegandoValor = cardCarrinho.childNodes[2].innerText
+        let format = parseInt(pegandoValor.slice(3))
+        let somaTotal = document.querySelector("#somaTotal")
+        console.log(format)
+        somando = somando - format
+        somaTotal.innerText = somando.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
+        console.log(somando)
+        
+        //remove quantidade de itens
+        let quantidadeCarrinho = document.querySelector("#quantidadeCarrinho")
+        quantiaCarrinho --
+        quantidadeCarrinho.innerHTML = quantiaCarrinho
+        
+        cardCarrinho.remove()
+    })
+    
+}
+
+//somando valor total
+
+function somar(valor){
+    let somaTotal = document.querySelector("#somaTotal")
+        somando += listTotalItens[valor].preco
+        somaTotal.innerText =  somando.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
+        
+}
+
+        //contando a quantidade de itens ao carrinho
+
+function contadorItensCarrinho(){
+    let quantidadeCarrinho = document.querySelector("#quantidadeCarrinho")
+        quantiaCarrinho++
+        quantidadeCarrinho.innerHTML = quantiaCarrinho
+    
+        console.log(quantiaCarrinho)
 }
 
 
+function finalizar(){
+    if(quantiaCarrinho > 0){
+    alert("O seu pedido esta finalizado com sucesso !")
+    location.reload()
+    }else{
+    alert("Carrinho vazio")
+    }
 
-
-
-
-/* 
-<li class="card_carrinho">
-<img src="./placa-de-video-gigabyte-geforce-rtx-3060-gaming-oc-12g-12-gb-gddr6-rev-2-0-ray-tracing-gv-3060gaming_1626461646_m.jpg" alt="img_carrinho">
-<h3>Placa de video</h3>
-<span class="preco">R$ 100</span>
-<button class="remove_carrinho" >Retirar do carrinho</button>
-</li>
- */
+    
+}

@@ -5,7 +5,6 @@ body , div , span , h1 , ul , li , h1 , header{
     text-decoration: none;
     list-style: none;
     font-family: Arial, Helvetica, sans-serif;
-    transition: 0.5s;
 }
 
 /* cabeçalio */
@@ -115,13 +114,13 @@ main{
     padding: 0;
     margin-top: 10px;
     font-size: 15px;
+    font-weight: bold;
 }
 .add_carrinho:hover{
     text-decoration-line: underline;
     color: rgb(38, 38, 169);
    
 }
-
 
 /* carrinho de compras */
 
@@ -158,10 +157,14 @@ main{
 }
 
 
-.card_carrinho:hover{
-    box-shadow: 0px 0px 4px 0px ;
+.titulo_carrinho{
+    background-color: rgba(32, 32, 126, 0.978);
+    color: white;
+    padding: 20px;
+    align-items: center;
+    margin: 0;
+    margin-top: 5px;
 }
-
 
 .lista_carrinho{
     display: flex;
@@ -169,16 +172,27 @@ main{
     background-color: rgba(239, 240, 243, 0.662);
     align-items: center;
     text-align: center;
-    border: soli;
+    border: solid 1px rgb(184, 180, 180);
+    max-height: 700px;
+    overflow-y: auto;
+}
+.card_carrinho{
+    width: 250px;
+    margin: 20px;
+    padding: 10px;
+}
+.card_carrinho:hover{
+    box-shadow: 0px 0px 4px 0px ;
 }
 
 /* contador */
 
 .contador{
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: rgb(120, 118, 118);
+    background-color: rgb(49, 47, 47);
 }
 
 .list_contador{
@@ -192,4 +206,44 @@ main{
 .span_contador{
     margin: 0px;
     padding: 10px;
+    color: white;
+}
+
+
+.button_retira_carrinho{
+    border: none;
+    background-color: rgba(239, 240, 243, 0.662);
+    padding: 0;
+    margin-top: 10px;
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    border: solid 1px;
+    font-weight: bold;
+}
+
+
+
+.button_retira_carrinho:hover{
+    text-decoration-line: underline;
+    color: rgb(38, 38, 169);
+    background-color: rgb(255, 255, 255);
+}
+
+.finalizar{
+    margin-top: 2px;
+    width: 100%;
+    height: 60px;
+    background-color: rgba(32, 32, 126, 0.978);
+    color: white;
+    font-size: 25px;
+}
+
+.finalizar:hover{
+    background-color: rgba(42, 42, 167, 0.978);
+}
+
+
+.centralizar_texto{
+    text-align: center;
 }
