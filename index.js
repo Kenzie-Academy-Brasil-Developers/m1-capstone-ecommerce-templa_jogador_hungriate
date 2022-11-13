@@ -78,7 +78,7 @@ const listItens = [
     titulo: "Placa mãe gigabyte",
     descricao: "peças da melhor qualidade",
     preco: 1630
-    },
+    }
 ];
 
 const listTotalItens = [];
@@ -177,8 +177,8 @@ function enviaCard(){
 
         eventoClick.addEventListener("click" , function (e){
 
-            addCarrinho(e.target.id[4] - 1) ;
-            somar(e.target.id[4] - 1);
+            addCarrinho(e.target.id.slice(4)- 1);
+            somar(e.target.id.slice(4) - 1);
             contadorItensCarrinho();
             
         });
@@ -270,8 +270,8 @@ function contadorItensCarrinho(){
 function finalizar(){
     if(quantiaCarrinho > 0){
         let transforma = somando.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})
-        alert(`O valor total é R$ ${transforma}`);
-        alert("O seu pedido foi enviao com sucesso!");
+        alert(`O valor total é: ${transforma}`);
+        alert("O seu pedido foi enviado com sucesso!");
     location.reload();
     }else{
     alert("Carrinho vazio");
