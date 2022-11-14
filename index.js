@@ -112,11 +112,6 @@ function totalItensCard(){
             card.id = listTotalItens[i].id;
             card.className = "card_produtos";
 
-            // if(listTotalItens[i].tipo == "Placa de video"){
-            //     console.log(listTotalItens[i])
-            // }
-           
-
         let img = document.createElement("img"); // img
             img.id = "img_card";
             img.className = "img_card";
@@ -125,7 +120,6 @@ function totalItensCard(){
         let div = document.createElement("div"); // div da descrição
             div.id = "div_descricao_card";
             div.className = "div_descricao_card";
-        
 
         let tipo = document.createElement("span"); // tipo do produto
             tipo.id = "tipo";
@@ -219,8 +213,6 @@ function addCarrinho(id){
     div.appendChild(preco);
     div.appendChild(retiraCarrinho);
     cardCarrinho.appendChild(div);
-   
-    
     carrinho.appendChild(cardCarrinho);
 
 
