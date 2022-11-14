@@ -109,7 +109,7 @@ function totalItensCard(){
     for(let i = 0 ; i < listTotalItens.length ; i++){ 
 
         let card = document.createElement("li"); // lista
-            card.id = listTotalItens[i].id;
+            card.id = "li_" + listTotalItens[i].id;
             card.className = "card_produtos";
 
         let img = document.createElement("img"); // img
