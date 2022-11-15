@@ -267,3 +267,11 @@ h3{
     display: none;
 }
 
+
+footer{
+    text-align: center;
+    color: rgb(177, 180, 182);
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-top: solid 1px rgb(221, 226, 230);
+}

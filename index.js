@@ -125,7 +125,6 @@ function itensCard(){
             }
             
 
-
         let img = document.createElement("img"); // img
             img.id = "img_card";
             img.className = "img_card";
@@ -160,7 +159,6 @@ function itensCard(){
             addCarrinho.className = "add_carrinho";
             addCarrinho.innerHTML = "ADICIONAR AO CARRINHO";
 
-
         lista.append(card);
         card.append(img);
         div.append(tipo , titulo , descricao , preco, addCarrinho)
@@ -170,7 +168,6 @@ function itensCard(){
  
     enviaCard();
 };
-
 
 // pegando id da lista e mandando pra function responsavel
 function enviaCard(){
@@ -183,12 +180,9 @@ function enviaCard(){
 
             addCarrinho(e.target.id.slice(4)- 1);
             somar(e.target.id.slice(4) - 1);
-            contadorItensCarrinho();
-            
+            contadorItensCarrinho();           
         });
-
-    };
-    
+    };   
 };
 
 // montando carrinho
@@ -224,26 +218,26 @@ function addCarrinho(id){
     carrinho.append(cardCarrinho);
 
 
-    // removendo item do carrinho
-    retiraCarrinho.addEventListener("click" ,  function(e){
-    retiraCarrinho = document.querySelector("#carrinho_" + (quantiaCarrinho - 1));
+        // removendo item do carrinho
+        retiraCarrinho.addEventListener("click" ,  function(e){
+        retiraCarrinho = document.querySelector("#carrinho_" + (quantiaCarrinho - 1));
 
-    // Subtrai valor do item retirado
-    
-    let pegandoValor = cardCarrinho.childNodes[1].childNodes[1].innerText;
-    
-    let format = parseInt(pegandoValor.slice(3));
-    let somaTotal = document.querySelector("#somaTotal");
-    somando = somando - format;
-    somaTotal.innerText = somando.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-    
-    //remove quantidade de itens
-    let quantidadeCarrinho = document.querySelector("#quantidadeCarrinho");
-    quantiaCarrinho --;
-    quantidadeCarrinho.innerHTML = quantiaCarrinho;
+        // Subtrai valor do item retirado
+        
+        let pegandoValor = cardCarrinho.childNodes[1].childNodes[1].innerText;
+        
+        let format = parseInt(pegandoValor.slice(3));
+        let somaTotal = document.querySelector("#somaTotal");
+        somando = somando - format;
+        somaTotal.innerText = somando.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+        
+        //remove quantidade de itens
+        let quantidadeCarrinho = document.querySelector("#quantidadeCarrinho");
+        quantiaCarrinho --;
+        quantidadeCarrinho.innerHTML = quantiaCarrinho;
 
-    cardCarrinho.remove();
-    });
+        cardCarrinho.remove();
+        });
     
 };
 
@@ -270,66 +264,68 @@ function finalizar(){
     location.reload();
     }else{
     alert("Carrinho vazio");
-    };
-    
+    };  
 };
 
 
 function filtroPlacasDeVideo(){
-    itensCard()
-    let listaProdutos = document.querySelector("#lista_produtos")
+    itensCard();
+    let listaProdutos = document.querySelector("#lista_produtos");
     for(let i = 0 ; i < listaProdutos.childNodes.length ; i++){
 
         if(listaProdutos.childNodes[i].classList.toggle("placa_de_video") == true){
-            listaProdutos.childNodes[i].classList.add("displayNone")
-        }    
-    
-    }   
-
-}
-
+            listaProdutos.childNodes[i].classList.add("displayNone");
+        }  ;     
+    } ; 
+};
 
 function totalProcessadores(){
-    itensCard()
+    itensCard();
     let listaProdutos = document.querySelector("#lista_produtos")
     for(let i = 0 ; i < listaProdutos.childNodes.length ; i++){
 
         if(listaProdutos.childNodes[i].classList.toggle("processador") == true){
-        
-            listaProdutos.childNodes[i].classList.add("displayNone")
-        }
-      
-    }
-    
-}
-
+            listaProdutos.childNodes[i].classList.add("displayNone");
+        };
+    } ;   
+};
 
 function totalPlacasMae(){
-    itensCard()
-    let listaProdutos = document.querySelector("#lista_produtos")
+    itensCard();
+    let listaProdutos = document.querySelector("#lista_produtos");
+    
     for(let i = 0 ; i < listaProdutos.childNodes.length ; i++){
 
         if(listaProdutos.childNodes[i].classList.toggle("placa_mae") == true){
-            listaProdutos.childNodes[i].classList.add("displayNone")
-        }
-
-    }
-    
-}
-
+            listaProdutos.childNodes[i].classList.add("displayNone");
+            
+        };
+    } ; 
+};
 
 function pesquisar(){
-    itensCard()
-    let button_pesquisa = document.querySelector("#lista_produtos")
-    let input_pesquisa = document.querySelector(".input_pesquisa")
-    for(let i = 0 ; i < button_pesquisa.childNodes.length ; i++){
-
-       
-        if(button_pesquisa.childNodes[i].childNodes[1].childNodes[1].innerText != input_pesquisa.value){
-            console.log("teste")
-            button_pesquisa.childNodes[i].classList.add("displayNone")
-         }
-
-    }
     
-}
+    itensCard();
+    let naoEncontrou = document.querySelector("#lista_produtos")
+    let verificador = 0;
+
+    let button_pesquisa = document.querySelector("#lista_produtos");
+    let input_pesquisa = document.querySelector(".input_pesquisa");
+    for(let i = 0 ; i < button_pesquisa.childNodes.length ; i++){
+      
+        if(button_pesquisa.childNodes[i].childNodes[1].childNodes[1].innerText.toLowerCase() != input_pesquisa.value.toLowerCase()){
+           button_pesquisa.childNodes[i].classList.add("displayNone");
+            
+        }else{
+           verificador ++
+        };
+         
+    } ;
+
+    if(verificador == 0){
+        naoEncontrou.innerHTML = "<strong>Produto não encontrado </strong>"
+        console.log("teste")
+    }
+    input_pesquisa.value = ""
+};
+
