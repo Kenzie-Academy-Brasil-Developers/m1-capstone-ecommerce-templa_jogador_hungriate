@@ -17,7 +17,7 @@
           <h1 class="titulo">Hungria Magazine</h1>
           <nav> 
               <ul>
-                  <li><span onclick="totalItensCard()" class="link_menu"><strong>Todos</strong></span></li>
+                  <li><span onclick="itensCard()" class="link_menu"><strong>Todos</strong></span></li>
                   <li><span onclick="filtroPlacasDeVideo()" class="link_menu">Placas de video</span></li>
                   <li><span onclick="totalProcessadores()" class="link_menu">Processadores</span></li>
                   <li><span onclick="totalPlacasMae()" class="link_menu">placas mãe</span></li>
@@ -42,7 +42,7 @@
       <section class="section_carrinho">
           <div class="div_pesquisa">
             <input class="input_pesquisa" placeholder="Digite aqui sua pesquisa" type="text">
-            <input class="input_button_pesquisa" type="button" value="Pesquisar">
+            <input onclick="pesquisar()" class="input_button_pesquisa" type="button" value="Pesquisar">
           </div>
 
           <!-- lista carrinho de compras -->

@@ -3,7 +3,7 @@ const listItens = [
     id: 1,
     img: "./img/PlacasDeVideo/rtx-2060.jpg",
     tipo: "Placa de video",
-    titulo: "RTX-2060",
+    titulo: "RTX 2060",
     descricao: "A melhor custo beneficio da categoria",
     preco: 2500
     },
@@ -12,7 +12,7 @@ const listItens = [
     id: 2,
     img: "./img/PlacasDeVideo/rtx-3060.jpg",
     tipo: "Placa de video",
-    titulo: "RTX-3060",
+    titulo: "RTX 3060",
     descricao: "uma das melhores placas da atualidade",
     preco: 2800
     },
@@ -21,7 +21,7 @@ const listItens = [
     id: 3,
     img: "./img/PlacasDeVideo/rtx-3060ti.jpg",
     tipo: "Placa de video",
-    titulo: "RTX-3060-ti",
+    titulo: "RTX 3060ti",
     descricao: "ideal pra jogar em Full hd e 2k com boa qualidade",
     preco: 3500
     },
@@ -30,7 +30,7 @@ const listItens = [
     id: 4,
     img: "./img/Processadores/core_i9.jpg",
     tipo: "Processador",
-    titulo: "core_i9",
+    titulo: "intel i9",
     descricao: "Um processador muito forte rapido e sem dor de cabeça",
     preco: 5000
     },
@@ -39,7 +39,7 @@ const listItens = [
     id: 5,
     img: "./img/Processadores/intel-core-i5.jpg",
     tipo: "Processador",
-    titulo: "intel-core-i5",
+    titulo: "intel i5",
     descricao: "O melhor processador custo beneficio.",
     preco: 1500
     },
@@ -48,7 +48,7 @@ const listItens = [
     id: 6,     
     img: "./img/Processadores/ryzen-9-5900x.jpg",
     tipo: "Processador",
-    titulo: "ryzen-9-5900x",
+    titulo: "ryzen",
     descricao: "o processador mais forte da atualidade",
     preco: 6000
     },
@@ -57,7 +57,7 @@ const listItens = [
     id: 7,
     img: "./img/PlacasMae/placa-mae-asrock.jpg",
     tipo: "Placa mãe",
-    titulo: "placa-mae-asrock",
+    titulo: "Asrock",
     descricao: "Uma das melhores do mercado.",
     preco: 1400
     },
@@ -66,7 +66,7 @@ const listItens = [
     id: 8,
     img: "./img/PlacasMae/placa-mae-asus-tuf.jpg",
     tipo: "Placa mãe",
-    titulo: "Placa mãe asus tuf",
+    titulo: "Asus",
     descricao: "Apropiada pra jogos",
     preco: 1600
     },
@@ -75,7 +75,7 @@ const listItens = [
     id: 9,
     img: "./img/PlacasMae/placa-mae-gigabyte.jpg",
     tipo: "Placa mãe",
-    titulo: "Placa mãe gigabyte",
+    titulo: "Gigabyte",
     descricao: "peças da melhor qualidade",
     preco: 1630
     }
@@ -95,13 +95,13 @@ function criaLista(){
         
     }
 
-    totalItensCard();
+    itensCard();
 };
 criaLista();
 
 
 // renderiza todos os cards
-function totalItensCard(){
+function itensCard(){
 
     let lista = document.querySelector("#lista_produtos"); // acesso ao ul
         lista.innerHTML = "";
@@ -112,10 +112,24 @@ function totalItensCard(){
             card.id = "li_" + listTotalItens[i].id;
             card.className = "card_produtos";
 
+            if(listTotalItens[i].tipo == "Placa de video"){
+                card.classList.add("placa_de_video")
+            }
+
+            if(listTotalItens[i].tipo == "Placa mãe"){
+                card.classList.add("placa_mae")
+            }
+
+            if(listTotalItens[i].tipo == "Processador"){
+                card.classList.add("processador")
+            }
+            
+
+
         let img = document.createElement("img"); // img
             img.id = "img_card";
             img.className = "img_card";
-            img.src = listItens[i].img;
+            img.src = listTotalItens[i].img;
 
         let div = document.createElement("div"); // div da descrição
             div.id = "div_descricao_card";
@@ -147,14 +161,10 @@ function totalItensCard(){
             addCarrinho.innerHTML = "ADICIONAR AO CARRINHO";
 
 
-        lista.appendChild(card);
-        card.appendChild(img);
-        div.appendChild(tipo);
-        div.appendChild(titulo);
-        div.appendChild(descricao);
-        div.appendChild(preco);
-        div.appendChild(addCarrinho);
-        card.appendChild(div);
+        lista.append(card);
+        card.append(img);
+        div.append(tipo , titulo , descricao , preco, addCarrinho)
+        card.append(div);
 
     };
  
@@ -208,12 +218,10 @@ function addCarrinho(id){
     let div = document.createElement("div");
     div.className = "div_descricao_carrinho";
     
-    cardCarrinho.appendChild(img);
-    div.appendChild(titulo);
-    div.appendChild(preco);
-    div.appendChild(retiraCarrinho);
-    cardCarrinho.appendChild(div);
-    carrinho.appendChild(cardCarrinho);
+    cardCarrinho.append(img);
+    div.append(titulo , preco , retiraCarrinho);
+    cardCarrinho.append(div);
+    carrinho.append(cardCarrinho);
 
 
     // removendo item do carrinho
@@ -226,10 +234,8 @@ function addCarrinho(id){
     
     let format = parseInt(pegandoValor.slice(3));
     let somaTotal = document.querySelector("#somaTotal");
-    console.log(format);
     somando = somando - format;
     somaTotal.innerText = somando.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-    console.log(somando);
     
     //remove quantidade de itens
     let quantidadeCarrinho = document.querySelector("#quantidadeCarrinho");
@@ -237,8 +243,6 @@ function addCarrinho(id){
     quantidadeCarrinho.innerHTML = quantiaCarrinho;
 
     cardCarrinho.remove();
-    e.stopPropagation();
-    
     });
     
 };
@@ -247,8 +251,7 @@ function addCarrinho(id){
 function somar(valor){
     let somaTotal = document.querySelector("#somaTotal");
         somando += listTotalItens[valor].preco;
-        somaTotal.innerText =  somando.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-        
+        somaTotal.innerText =  somando.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});  
 };
 
     //contando a quantidade de itens ao carrinho
@@ -270,3 +273,63 @@ function finalizar(){
     };
     
 };
+
+
+function filtroPlacasDeVideo(){
+    itensCard()
+    let listaProdutos = document.querySelector("#lista_produtos")
+    for(let i = 0 ; i < listaProdutos.childNodes.length ; i++){
+
+        if(listaProdutos.childNodes[i].classList.toggle("placa_de_video") == true){
+            listaProdutos.childNodes[i].classList.add("displayNone")
+        }    
+    
+    }   
+
+}
+
+
+function totalProcessadores(){
+    itensCard()
+    let listaProdutos = document.querySelector("#lista_produtos")
+    for(let i = 0 ; i < listaProdutos.childNodes.length ; i++){
+
+        if(listaProdutos.childNodes[i].classList.toggle("processador") == true){
+        
+            listaProdutos.childNodes[i].classList.add("displayNone")
+        }
+      
+    }
+    
+}
+
+
+function totalPlacasMae(){
+    itensCard()
+    let listaProdutos = document.querySelector("#lista_produtos")
+    for(let i = 0 ; i < listaProdutos.childNodes.length ; i++){
+
+        if(listaProdutos.childNodes[i].classList.toggle("placa_mae") == true){
+            listaProdutos.childNodes[i].classList.add("displayNone")
+        }
+
+    }
+    
+}
+
+
+function pesquisar(){
+    itensCard()
+    let button_pesquisa = document.querySelector("#lista_produtos")
+    let input_pesquisa = document.querySelector(".input_pesquisa")
+    for(let i = 0 ; i < button_pesquisa.childNodes.length ; i++){
+
+       
+        if(button_pesquisa.childNodes[i].childNodes[1].childNodes[1].innerText != input_pesquisa.value){
+            console.log("teste")
+            button_pesquisa.childNodes[i].classList.add("displayNone")
+         }
+
+    }
+    
+}
