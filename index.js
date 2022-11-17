@@ -13,7 +13,7 @@ const listItens = [
     img: "./img/PlacasDeVideo/rtx-3060.jpg",
     tipo: "Placa de video",
     titulo: "RTX 3060",
-    descricao: "uma das melhores placas da atualidade",
+    descricao: "Uma das melhores placas da atualidade",
     preco: 2800
     },
 
@@ -22,7 +22,7 @@ const listItens = [
     img: "./img/PlacasDeVideo/rtx-3060ti.jpg",
     tipo: "Placa de video",
     titulo: "RTX 3060ti",
-    descricao: "ideal pra jogar em Full hd e 2k com boa qualidade",
+    descricao: "Ideal pra jogar em Full hd e 2k com boa qualidade",
     preco: 3500
     },
 
@@ -39,7 +39,7 @@ const listItens = [
     id: 5,
     img: "./img/Processadores/intel-core-i5.jpg",
     tipo: "Processador",
-    titulo: "intel i5",
+    titulo: "Intel i5",
     descricao: "O melhor processador custo beneficio.",
     preco: 1500
     },
@@ -48,8 +48,8 @@ const listItens = [
     id: 6,     
     img: "./img/Processadores/ryzen-9-5900x.jpg",
     tipo: "Processador",
-    titulo: "ryzen",
-    descricao: "o processador mais forte da atualidade",
+    titulo: "Ryzen",
+    descricao: "O processador mais forte da atualidade",
     preco: 6000
     },
 
@@ -66,7 +66,7 @@ const listItens = [
     id: 8,
     img: "./img/PlacasMae/placa-mae-asus-tuf.jpg",
     tipo: "Placa mãe",
-    titulo: "Asus",
+    titulo: "asus",
     descricao: "Apropiada pra jogos",
     preco: 1600
     },
@@ -78,7 +78,9 @@ const listItens = [
     titulo: "Gigabyte",
     descricao: "peças da melhor qualidade",
     preco: 1630
-    }
+    },
+
+ 
 ];
 
 const listTotalItens = [];
