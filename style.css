@@ -143,18 +143,13 @@ main{
     color: rgb(13, 13, 240);
    
 }
-main{
-    position: relative;
-}
 
 /* carrinho de compras */
 .section_carrinho{
-    
-    
-    position: fixed;
+  
+    height: 50vh;
+    position: sticky;
     top: 80px;
-    right: 320px;
-    width: 350px;
 }
 
 .div_pesquisa{
@@ -257,6 +252,7 @@ h3{
 
 /* contador */
 .contador{
+    border: none;
     padding: 20px;
     display: flex;
     flex-direction: column;
