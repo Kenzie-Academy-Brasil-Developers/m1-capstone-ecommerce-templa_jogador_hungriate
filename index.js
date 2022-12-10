@@ -6,7 +6,7 @@ const listItens = [
     titulo: "RTX 2060",
     descricao: "A melhor custo beneficio da categoria",
     preco: 2500
-    },
+    }, 
 
     {
     id: 2,
